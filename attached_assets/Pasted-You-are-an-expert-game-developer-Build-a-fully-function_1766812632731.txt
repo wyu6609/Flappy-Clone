@@ -1,0 +1,58 @@
+You are an expert game developer. Build a fully functional, polished Flappy Bird clone that matches the original game 1:1 in behavior and feel.
+
+TECH STACK / RUNTIME
+- Use HTML + CSS + JavaScript (Canvas 2D).
+- Must run in a single Replit web project with an index.html entry point.
+- No external assets required; generate graphics with canvas drawing. (Optional: lightweight SVG or simple base64 sprites if needed, but keep it self-contained.)
+- No build step. Just open and play.
+
+CORE GAMEPLAY (MATCH ORIGINAL)
+- Bird physics: gravity, flap impulse, terminal velocity, and rotation/tilt behavior that visually matches (nose up on flap, gradually tilts down while falling).
+- Single tap / spacebar causes flap. Holding does nothing special.
+- Pipes: pairs of top/bottom pipes with a gap, constant horizontal speed, randomized vertical gap placement within a sensible range.
+- Collision: accurate hitboxes (reasonable approximations), including ground and pipes.
+- Scoring: score increases by 1 when the bird successfully passes the center line of a pipe pair.
+- Difficulty/feel: pipe spacing and speed should feel like classic Flappy Bird (not too easy, not impossible). Use tuned constants and keep them easy to adjust.
+
+GAME STATES / UI
+- States: "READY" (start screen), "PLAYING", "GAME OVER".
+- READY screen: show title text and “Tap/Space to start”. Pipes should be visible but not moving OR move only after first flap (choose the classic behavior: game starts moving on first input).
+- GAME OVER: freeze gameplay, show final score and best score, show “Tap/Space to retry”.
+- Best score persists using localStorage.
+- Add simple UI: score displayed top-center during play.
+
+AUDIO (SELF-CONTAINED)
+- Implement sound effects using Web Audio API (no external files):
+  - flap
+  - score (ding)
+  - hit (collision)
+  - die (ground impact / game over)
+- Add a mute/unmute toggle (small icon button). Persist preference in localStorage.
+
+VISUALS / POLISH
+- Background: parallax feel (at least a scrolling ground + static sky gradient). Ground should scroll continuously while playing.
+- Pipes: classic green pipe look with top/bottom caps (drawn with canvas shapes).
+- Bird: simple but cute (circle/body + wing) with rotation.
+- Pixel-ish UI styling is a plus but keep it clean.
+- Ensure consistent rendering on high-DPI displays (handle devicePixelRatio scaling).
+
+CONTROLS
+- Desktop: Spacebar, Up arrow, and mouse click to flap.
+- Mobile: Touch / tap to flap.
+- Prevent page scrolling on space/touch while playing.
+
+QUALITY / CODE REQUIREMENTS
+- Clean structure with classes/modules: Game, Bird, PipeManager, UI, AudioManager.
+- Deterministic update loop: requestAnimationFrame with delta time.
+- Include a settings/constants section at top for tuning physics and difficulty.
+- Include comments explaining key constants and collision logic.
+- Must be robust: restart works reliably, no memory leaks, pipes reset correctly, score resets, best score persists.
+
+FILES TO CREATE
+- index.html (canvas + UI elements)
+- style.css (layout, buttons, responsive)
+- script.js (all game logic)
+
+DELIVERABLE
+- Provide the full code for all files with clear separators.
+- Make sure the app runs immediately in Replit by pressing Run and opening the web view.
